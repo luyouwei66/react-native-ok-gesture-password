@@ -1,3 +1,9 @@
+/*
+ * A smart gesture password locker for react-native apps
+ * https://github.com/react-native-component/react-native-smart-sudoku-grid/
+ * Released under the MIT license
+ * Copyright (c) 2016 react-native-component <moonsunfall@aliyun.com>
+ */
 
 import React, {
     Component,
@@ -83,7 +89,7 @@ export default class OkGesturePassword extends Component {
         this._sequence = []
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
 
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
@@ -96,7 +102,7 @@ export default class OkGesturePassword extends Component {
 
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         this.setState({
             isWarning: nextProps.isWarning
         });
@@ -226,10 +232,10 @@ export default class OkGesturePassword extends Component {
     }
 
     _getTouchPoint(location) {
-        console.log("_getTouchPoint:" + JSON.stringify(location))
+        //console.log("_getTouchPoint:" + JSON.stringify(location))
         for (let point of this.state.points) {
             if (Utils.isPointInPath(location, point.origin, this._pointRadius)) {
-                console.log("point:" + JSON.stringify(point))
+                //console.log("point:" + JSON.stringify(point))
                 return point
             }
         }
